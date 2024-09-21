@@ -140,11 +140,11 @@
         /* Thiết kế lịch */
         .calendar {
             display: grid;
-            grid-template-columns: repeat(7, 80px);
+            grid-template-columns: repeat(7, 50px);
             gap: 10px;
             text-align: center;
             margin-top: 20px;
-            max-width: 800px; /* Giới hạn chiều rộng tối đa */
+            max-width: 700px; /* Giới hạn chiều rộng tối đa */
             overflow-x: hidden; /* Cuộn ngang nếu cần */
         }
 
@@ -153,14 +153,14 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             background-color: #f9f9f9;
-            font-size: 1.2em; /* Sử dụng em cho font-size */
+            font-size: 1.0em; /* Sử dụng em cho font-size */
             position: relative;
         }
 
         .day-header {
             font-weight: bold;
             color: #2c3e50;
-            font-size: 1.2em; /* Sử dụng em cho font-size */
+            font-size: 1.0em; /* Sử dụng em cho font-size */
         }
 
         .day.heart {
@@ -174,11 +174,11 @@
             position: absolute;
             top: -10px;
             right: -10px;
-            font-size: 1.5em; /* Sử dụng em cho font-size */
+            font-size: 1.0em; /* Sử dụng em cho font-size */
         }
 
         .countdown {
-            font-size: 2.5em; /* Sử dụng em cho font-size */
+            font-size: 1.2em; /* Sử dụng em cho font-size */
             font-weight: bold;
             color: #2c3e50;
             margin-top: 40px;
@@ -192,7 +192,7 @@
         }
 
         /* Media Queries cho thiết bị nhỏ hơn */
-        @media (max-width: 768px) {
+        @media (max-width: 500px) {
             .day {
                 font-size: 1em; /* Giảm kích thước chữ trên thiết bị nhỏ */
             }
