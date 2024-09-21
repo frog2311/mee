@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY FAMILY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box; /* Đảm bảo mọi kích thước bao gồm cả padding và border */
+        }
+        
+        body {
+            overflow-x: hidden; /* Ngăn cuộn ngang */
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #ffe4e1; /* Màu nền kem hồng nhẹ */
+            color: #ba1046; /* Màu chữ hồng nhạt */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #fbd5dc; /* Hồng nhạt cho header */
+            padding: 2em; /* Sử dụng em cho padding */
+            border-bottom: 5px solid #ffb6c1; /* Đường viền hồng nhạt */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.0em;
+            margin: 0;
+            text-shadow: 2px 2px #ff7a7e; /* Đổ bóng nhẹ màu hồng đậm */
+        }
+
+        .funny {
+            font-size: 1.0em;
+            margin: 1em 0; /* Sử dụng em cho margin */
+            color: #f67c92; /* Hồng sáng cho phần chữ vui nhộn */
+        }
+
+        
+
+        .container {
+            max-width: 1200px;
+            padding: 2em;
+            font-size: 1.0em;
+            margin: 0 auto;
+            display: flex; /* Sử dụng Flexbox */
+            flex-direction: column; /* Căn giữa theo chiều dọc */
+            align-items: center; /* Căn giữa theo chiều ngang */
+        }
+
+        .card {
+            background-color: #fff0f5; /* Màu nền kem hồng rất nhẹ */
+            border-radius: 20px;
+            transition: transform 0.3s;
+            width: 100%; /* Thay đổi thành 100% để phù hợp với kích thước container */
+            max-width: 1100px; /* Đặt chiều rộng tối đa cho thẻ card */
+            padding: 2em;
+            margin: 2em 0;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
+        }
+
+        
+
+        .card:hover {
+            transform: scale(1.05); /* Phóng to khi rê chuột */
+        }
+
+
+        .photo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 3em;
+            flex-wrap: wrap; /* Cho phép các ảnh xuống dòng */
+        }
+
+        .photo {
+            width: 100%; /* Đặt chiều rộng hình ảnh bằng 100% chiều rộng thẻ card */
+            max-width: 300px; /* Đảm bảo không vượt quá chiều rộng tối đa */
+            height: 200px; /* Đặt chiều cao cố định */
+            object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+            border-radius: 20px; /* Thay đổi radius để tạo độ bo tròn nhẹ hơn */
+        }
+
+        .parent-photo {
+            width: 100%; /* Đặt chiều rộng của ảnh cha bằng 100% */
+            height: 100%; /* Đặt chiều cao của ảnh cha bằng 100% */
+            object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+            border-radius: 20px; /* Đảm bảo ảnh cha cũng có độ bo tròn */
+        }
+
+
+        /* Định dạng cột mốc thời gian */
+        .timeline-container {
+            margin-top: 2em; /* Sử dụng em cho margin */
+            display: flex; /* Sử dụng flexbox */
+            justify-content: center; /* Căn giữa các item trong container */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            gap: 10px; /* Khoảng cách giữa các ảnh */
+            margin-bottom: 3em; /* Sử dụng em cho margin */
+        }
+
+        .timeline {
+            display: flex; /* Sử dụng flexbox cho timeline */
+            justify-content: center; /* Căn giữa các ảnh trong timeline */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            max-width: 80%; /* Giới hạn chiều rộng tối đa của timeline */
+        }
+
+        .timeline-item {
+            text-align: center;
+            display: flex; /* Căn giữa nội dung của mỗi item */
+            flex-direction: column; /* Đặt chiều dọc cho các ảnh */
+            align-items: center; /* Căn giữa từng ảnh */
+            flex: 1; /* Đảm bảo mỗi item chiếm đều không gian */
+        }
+
+        .timeline-item p {
+            font-size: 1.1em; /* Sử dụng em cho font-size */
+            font-weight: bold;
+            margin-bottom: 1em; /* Sử dụng em cho margin */
+        }
+
+        /* Định dạng ảnh */
+        .circle-photo {
+            width: 100%; /* Đặt chiều rộng hình ảnh bằng 100% chiều rộng thẻ card */
+            height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
+            object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+            border-radius: 30px; /* Đặt góc tròn cho hình ảnh */
+        }
+
+
+        footer {
+            margin-top: 2em; /* Sử dụng em cho margin */
+            padding: 1em; /* Sử dụng em cho padding */
+            background-color: #fbd5dc; /* Hồng nhạt cho footer */
+            font-size: 1.2em;
+            color: #d2698b; /* Màu chữ hồng nhạt */
+        }
+
+        .heart {
+            position: absolute; 
+            font-size: 2em;
+            color: #ff69b4; /* Hồng sáng cho trái tim */
+            animation: fall 4s linear;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+
+        /* Thiết kế lịch */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            text-align: center;
+            margin-top: 20px;
+            max-width: 100%; /* Giới hạn chiều rộng tối đa */
+            overflow-x: auto; /* Cuộn ngang nếu cần */
+        }
+
+        .day {
+            padding: 1em; /* Sử dụng em cho padding */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            font-size: 1.2em; /* Sử dụng em cho font-size */
+            position: relative;
+        }
+
+        .day-header {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.2em; /* Sử dụng em cho font-size */
+        }
+
+        .day.heart {
+            background-color: #fd9a9a;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .day.heart::after {
+            content: '❤️';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5em; /* Sử dụng em cho font-size */
+        }
+
+        .countdown {
+            font-size: 2.5em; /* Sử dụng em cho font-size */
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 40px;
+        }
+
+        .message {
+            font-size: 2em; /* Sử dụng em cho font-size */
+            color: #ec4f4f;
+            margin-top: 80px;
+            margin-bottom: 80px; /* Khoảng cách dưới cả hàng ảnh */
+        }
+
+        /* Media Queries cho thiết bị nhỏ hơn */
+        @media (max-width: 768px) {
+            .day {
+                font-size: 1em; /* Giảm kích thước chữ trên thiết bị nhỏ */
+            }
+
+            .day-header {
+                font-size: 1.1em; /* Giảm kích thước chữ trên thiết bị nhỏ */
+            }
+
+            .countdown,
+            .message {
+                font-size: 1.5em; /* Giảm kích thước chữ trên thiết bị nhỏ */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        
+        <h1>GIA ĐÌNH SƠN LUYÊN</h1>
+        
+        <p class="funny">Có một nơi để về, đó là nhà 🏠</p>
+        <p class="funny">Có những người để yêu thương, đó là gia đình 😊</p>
+        <p class="funny">Có được cả hai, đó là hạnh phúc ❤️</p>
+        
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>20 Năm Yêu Thương</h2>
+            
+            <div class="photo-container">
+                <div class="photo">
+                    <img src="images/bo.jpg" alt="Bố" class="parent-photo">
+                </div>
+                
+                <div class="photo">
+                    <img src="images/me.jpg" alt="Mẹ" class="parent-photo">
+                </div>
+
+            </div>
+            
+
+            <!-- Lịch tháng 9 năm 2024 -->
+            <div class="calendar">
+                <!-- Header cho các ngày trong tuần -->
+                <div class="day-header">T2</div>
+                <div class="day-header">T3</div>
+                <div class="day-header">T4</div>
+                <div class="day-header">T5</div>
+                <div class="day-header">T6</div>
+                <div class="day-header">T7</div>
+                <div class="day-header">CN</div>
+
+                <!-- Các ngày trống trước ngày 1 -->
+                <div class="day"></div>
+                <div class="day"></div>
+                <div class="day"></div>
+                <div class="day"></div>
+                <div class="day"></div>
+                <div class="day"></div>
+
+                <!-- Các ngày từ 1 đến 30 -->
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day heart">21</div> <!-- Ngày 21 được đánh dấu bằng trái tim -->
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+            </div>
+
+            <div class="message">🐯🐐 Gia đình bắt đầu từ năm 2004 🫅👸</div>
+
+            <img src="images/a.jpg" alt="Ảnh a" style="margin-bottom: 80px; width: 100%; height: auto;"> 
+            <img src="images/b.jpg" alt="Ảnh b" style="margin-bottom: 80px; width: 100%; height: auto;"> 
+            <img src="images/2.jpg" alt="Ảnh 2" style="margin-bottom: 80px; width: 100%; height: auto;"> 
+
+        </div>
+
+        <div class="card">
+            <h2>3 con vịt zàng 🦆🦆🦆</h2>
+            <p style="font-size: 170%;">Nhà hơi ồn ào nhưng bố mẹ phải cố chịu thôi chứ biết sao giờ! hihi 😎</p>
+        
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item" style="margin-right: 60px;">
+                        <p>2005</p>
+                        <p>Đại ka</p>
+                        <div class="photo">
+                            <img src="images/anh2005.jpg" alt="Ảnh 2005" class="circle-photo">
+                        </div>
+                    </div>
+                    <div class="timeline-item" style="margin-right: 60px;">
+                        <p>2010</p>
+                        <p>Nhị ka</p>
+                        <div class="photo">
+                            <img src="images/anh2010.jpg" alt="Ảnh 2010" class="circle-photo">
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <p>2016</p>
+                        <p>Tam ka</p>
+                        <div class="photo">
+                            <img src="images/anh2016.jpg" alt="Ảnh 2016" class="circle-photo">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card" >
+            <h2>Đôi lời Đại ka nhắn nhủ</h2>
+            <p style="text-align:left;font-size: 130%;">Bố mẹ ơi, hôm nay kỷ niệm 20 năm cưới rồi đó! 🎉🎉🎉</p>
+            <p style="text-align:left;font-size: 130%;">Con bội phục bố mẹ vì đã chịu đựng nhau lâu đến vậy! </p>
+            <p style="text-align:left;font-size: 130%;">Nhìn mẹ kiên nhẫn lắm mới vượt qua được "sự bừa bộn nghệ thuật" và khó chiều của bố. Mà nhờ vườn rau của bố mới có rau sạch mà ăn cùng với đôi tay sửa đồ trong nhà đỉnh nóc kịch trần. </p>
+            <p style="text-align:left;font-size: 130%;">Nhưng cuối cùng thì bố mẹ vẫn bên nhau, cùng tạo nên một "bộ sưu tập vịt vàng 🦆" là tụi con 😎. </p>
+            <p style="text-align:left;font-size: 130%;">Thôi thì, chúc bố mẹ mãi mãi hạnh phúc ❤️‍🔥, tiếp tục "chiến đấu" ⚔️ và không quên "check var" nhau 👀 khi cần nha 🤣! Yêu bố mẹ nhiều! 💌💌💌</p>
+            
+            <div style="text-align:center; margin-top: 20px;">
+                <img src="https://i.pinimg.com/564x/1a/63/65/1a636561864dc2047fd9e5a51505388f.jpg" alt="Lời nhắn nhủ" style="width: 30%; border: 2px solid #000;">
+            </div>
+            
+        </div>
+
+        <div class="card" >
+            <h2>Góc nói nhỏ</h2>
+
+            <p style="text-align:left; color:rgb(83, 171, 174); font-size: 130%;">  Trang giao diện này là con tự thiết kế và làm sau khi học lập trình web được 2 ngày nên vẫn chưa được chỉnh chu.</p>
+
+            <p style="text-align:left; color:rgb(83, 171, 174); font-size: 130%;">  Đây cũng là món quà 🎁 mà con muốn dành tặng bố mẹ nên dù khó coi vẫn mong bố mẹ thấy vui và hạnh phúc vào ngày đẹp trời này! </p>
+
+            <p style="text-align:left; color:rgb(83, 171, 174); font-size: 130%;">  HEHE</p>
+
+            <p style="text-align:left; color:rgb(83, 171, 174); font-size: 130%;">  Chủ yếu vẫn là không có tiền 💸 để mua quà! 🥲</p>
+
+        </div>
+
+        
+    </div>
+
+    <footer>
+        <p><b>NGÔI NHÀ ẤM ÁP CỦA CHANG</b></p>
+    </footer>
+
+    <script>
+        let isFalling = true;
+        const fallDuration = 30000; // 30 giây
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 200 + 'vw'; // Vị trí ngang ngẫu nhiên
+            heart.style.animationDuration = (Math.random() * 1 + 2) + 's'; // Thời gian rơi ngẫu nhiên s
+            document.body.appendChild(heart);
+
+            // Xóa trái tim sau khi rơi
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        const intervalId = setInterval(() => {
+            if (isFalling) {
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(createHeart, i * 50); // Xuất hiện trái tim mỗi 50ms
+                }
+            }
+        }, 1000); // Lặp lại mỗi giây
+
+        // Dừng rơi sau 30 giây
+        setTimeout(() => {
+            isFalling = false; // Dừng tạo trái tim
+            clearInterval(intervalId); // Dừng lặp lại
+        }, fallDuration);
+
+        
+    </script>
+</body>
+</html>
