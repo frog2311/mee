@@ -81,14 +81,12 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 3em;
-            flex-wrap: nowrap; /* Không cho phép các ảnh xuống dòng */
-            overflow: hidden; /* Không cho phép cuộn */
-            width: 100%; /* Đặt chiều rộng bằng 100% */
+            flex-wrap: nowrap; /* ko Cho phép các ảnh xuống dòng */
         }
 
         .photo {
             width: 100%; /* Đặt chiều rộng hình ảnh bằng 100% chiều rộng thẻ card */
-            max-width: calc(33.33% - 10px); /* Điều chỉnh chiều rộng tối đa cho 3 ảnh trên 1 dòng, trừ gap */
+            max-width: 300px; /* Đảm bảo không vượt quá chiều rộng tối đa */
             height: 200px; /* Đặt chiều cao cố định */
             object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
             border-radius: 20px; /* Thay đổi radius để tạo độ bo tròn nhẹ hơn */
