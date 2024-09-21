@@ -53,12 +53,17 @@
 
         .card {
             background-color: #fff0f5; /* Màu nền kem hồng rất nhẹ */
-            border-radius: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
             transition: transform 0.3s;
             width: 100%; /* Thay đổi thành 100% để phù hợp với kích thước container */
             max-width: 1100px; /* Đặt chiều rộng tối đa cho thẻ card */
             padding: 2em;
-            margin: 2em 0;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Căn giữa theo chiều ngang */
+            text-align: center; /* Căn giữa văn bản */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
         }
@@ -95,43 +100,19 @@
         }
 
 
-        /* Định dạng cột mốc thời gian */
-        .timeline-container {
-            margin-top: 2em; /* Sử dụng em cho margin */
-            display: flex; /* Sử dụng flexbox */
-            justify-content: center; /* Căn giữa các item trong container */
-            align-items: center; /* Căn giữa theo chiều dọc */
-            gap: 10px; /* Khoảng cách giữa các ảnh */
-            margin-bottom: 3em; /* Sử dụng em cho margin */
+        .photo1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
         }
 
-        .timeline {
-            display: flex; /* Sử dụng flexbox cho timeline */
-            justify-content: center; /* Căn giữa các ảnh trong timeline */
-            align-items: center; /* Căn giữa theo chiều dọc */
-            max-width: 80%; /* Giới hạn chiều rộng tối đa của timeline */
-        }
-
-        .timeline-item {
-            text-align: center;
-            display: flex; /* Căn giữa nội dung của mỗi item */
-            flex-direction: column; /* Đặt chiều dọc cho các ảnh */
-            align-items: center; /* Căn giữa từng ảnh */
-            flex: 1; /* Đảm bảo mỗi item chiếm đều không gian */
-        }
-
-        .timeline-item p {
-            font-size: 1.1em; /* Sử dụng em cho font-size */
-            font-weight: bold;
-            margin-bottom: 1em; /* Sử dụng em cho margin */
-        }
-
-        /* Định dạng ảnh */
-        .circle-photo {
-            width: 100%; /* Đặt chiều rộng hình ảnh bằng 100% chiều rộng thẻ card */
-            height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
-            object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
-            border-radius: 30px; /* Đặt góc tròn cho hình ảnh */
+        .circle-photo1 {
+            width: 150px; /* Điều chỉnh kích thước ảnh */
+            height: 150px;
+            border-radius: 50%; /* Tạo hình tròn cho ảnh */
+            object-fit: cover; /* Đảm bảo ảnh không bị méo */
+            border: 2px solid #ccc; /* Thêm đường viền nếu cần */
         }
 
 
@@ -239,7 +220,7 @@
         
     </header>
 
-    <div class="container">
+    < class="container">
         <div class="card">
             <h2>20 Năm Yêu Thương</h2>
             
@@ -307,7 +288,7 @@
                 <div class="day">30</div>
             </div>
 
-            <div class="message">🐯🐐 Gia đình bắt đầu từ năm 2004 🫅👸</div>
+            <div class="message">Gia đình bắt đầu từ năm 2004 🫅👸</div>
 
             <img src="images/a.jpg" alt="Ảnh a" style="margin-bottom: 80px; width: 100%; height: auto;"> 
             <img src="images/b.jpg" alt="Ảnh b" style="margin-bottom: 80px; width: 100%; height: auto;"> 
@@ -316,35 +297,29 @@
         </div>
 
         <div class="card">
-            <h2>3 con vịt zàng 🦆🦆🦆</h2>
+            <h2>3 con vịt zàng</h2>
+            <h2>🦆🦆🦆</h2>
             <p style="font-size: 170%;">Nhà hơi ồn ào nhưng bố mẹ phải cố chịu thôi chứ biết sao giờ! hihi 😎</p>
         
-            <div class="timeline-container">
-                <div class="timeline">
-                    <div class="timeline-item" style="margin-right: 60px;">
-                        <p>2005</p>
-                        <p>Đại ka</p>
-                        <div class="photo">
-                            <img src="images/anh2005.jpg" alt="Ảnh 2005" class="circle-photo">
-                        </div>
-                    </div>
-                    <div class="timeline-item" style="margin-right: 60px;">
-                        <p>2010</p>
-                        <p>Nhị ka</p>
-                        <div class="photo">
-                            <img src="images/anh2010.jpg" alt="Ảnh 2010" class="circle-photo">
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <p>2016</p>
-                        <p>Tam ka</p>
-                        <div class="photo">
-                            <img src="images/anh2016.jpg" alt="Ảnh 2016" class="circle-photo">
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+                            
+                            <div class="photo1">
+                                <img src="images/anh2005.jpg" alt="Ảnh 2005" class="circle-photo1">
+                            </div>
+                            <p>Đại ka - 2005</p>
+                        
+                        
+                            
+                            <div class="photo1">
+                                <img src="images/anh2010.jpg" alt="Ảnh 2010" class="circle-photo1">
+                            </div>
+                            <p>Nhị ka - 2010</p>
+                        
+                            
+                            <div class="photo1">
+                                <img src="images/anh2016.jpg" alt="Ảnh 2016" class="circle-photo1">
+                            </div>
+                            <p>Tam ka - 2016</p>
+            
         </div>
         
 
